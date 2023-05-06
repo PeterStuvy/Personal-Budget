@@ -9,3 +9,9 @@ class income_expense_tracker:
     def add_account(self, name, balance=0):
         self.accounts[name] = balance
     
+    def add_transaction(self, date, amount, description, account):
+        #add some error handling for whether the account exists
+        self.accounts[account] += amount
+        self._append_transaction_to_csv(date, amount, description, account)
+    
+    
