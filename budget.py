@@ -6,7 +6,7 @@ import csv
 class budget:
     def __init__(self):
         self.accounts = {}
-        self.limit = {}
+        self.limits = {}
     
     #Add and remove accounts abd transactions
 
@@ -36,7 +36,8 @@ class budget:
     #Set limit for transaction types
 
     def set_limit(self, category, amount):
-        self.limit[category] = amount
+        self.limits[category] = amount
 
-    
+    def view_limit(self):
+        pprint(self.limits)
     
