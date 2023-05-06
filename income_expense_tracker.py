@@ -18,4 +18,7 @@ class income_expense_tracker:
         data_frame = pd.read_csv('transactions.csv', parse_dates=['Date'])
         pprint(data_frame)
     
+    def view_accounts(self):
+        pprint(self.accounts)
+
     
