@@ -41,3 +41,9 @@ class budget:
     def view_limit(self):
         pprint(self.limits)
     
+    def check_limit(self, category):
+        if category not in self.limits:
+            raise ValueError(f'Limit for category {category} has not been set.')
+        return self.limits[category]
+    
+    
