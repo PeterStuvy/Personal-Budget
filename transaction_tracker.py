@@ -3,7 +3,7 @@ from pprint import pprint
 from datetime import datetime
 import csv
 
-class income_expense_tracker:
+class transaction_tracker:
     def __init__(self):
         self.accounts = {}
 
