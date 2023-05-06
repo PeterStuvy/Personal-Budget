@@ -14,4 +14,8 @@ class income_expense_tracker:
         self.accounts[account] += amount
         self._append_transaction_to_csv(date, amount, description, account)
     
+    def view_transactions(self):
+        data_frame = pd.read_csv('transactions.csv', parse_dates=['Date'])
+        pprint(data_frame)
+    
     
