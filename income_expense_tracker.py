@@ -1,6 +1,7 @@
 import pandas as pd
 from pprint import pprint
 from datetime import datetime
+import csv
 
 class income_expense_tracker:
     def __init__(self):
@@ -21,4 +22,8 @@ class income_expense_tracker:
     def view_accounts(self):
         pprint(self.accounts)
 
+    def _append_transaction_to_csv(self, date, amount, description, account):
+        with open('transactions.csv', mode='a', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow([date, amount, description, account])
     
