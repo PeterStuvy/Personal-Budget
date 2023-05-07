@@ -19,8 +19,8 @@ class budget:
         self._append_transaction_to_csv(date, amount, description, account)
     
     def view_transactions(self):
-        data_frame = pd.read_csv('transactions.csv', parse_dates=['Date'])
-        pprint(data_frame)
+        df= pd.read_csv('transactions.csv', parse_dates=['Date'])
+        pprint(df)
     
     def view_accounts(self):
         pprint(self.accounts)
@@ -47,9 +47,17 @@ class budget:
         return self.limits[category]
     
     def check_total_expenses(self, start_date=None, end_date=None):
+        df = pd.read_csv('transactions.csv', parse_dates=['Date'])
+        if start_date and end_date:
+            mask = (df['Date'] >= start_date) & (df['Date'] <= end_date)
+            df = df.loc[mask]
+        return df['Amount'].sum()
+
+    def check_category_expenses(self, category, start_date=None, end_date=None):
         data_frame = pd.read_csv('transactions.csv', parse_dates=['Date'])
         if start_date and end_date:
             mask = (data_frame['Date'] >= start_date) & (data_frame['Date'] <= end_date)
-            data_frame = data_frame.loc[mask]
-        return data_frame['Amount'].sum()
-
+            df = data_frame.loc[mask]
+        return df[df['Category'] == category]['Amount'].sum()
+    
+    
