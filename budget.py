@@ -49,4 +49,4 @@ class budget:
         category_expenses = self.check_category_expenses(category)
         limit = self.check_limit
         remaining_balance = limit - category_expenses
-        pprint(f'The remaining balance for {category} is {remaining_balance}')
+        pprint(f'The remaining balance for {category} is {remaining_balance}.')
