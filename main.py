@@ -5,6 +5,7 @@ from budget import budget
 from datetime import datetime
 import click
 from pprint import pprint
+import sys
 
 my_budget = budget()
 
@@ -58,6 +59,7 @@ while True:
         my_budget.check_remaining_balance(remaining_balance_choice)
 
     elif feature_choice == 'Quit':
-        SystemExit
+        pprint('exiting program...')
+        sys.exit()
     
     
