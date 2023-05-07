@@ -19,7 +19,7 @@ class budget:
         self._append_transaction_to_csv(date, amount, description, account)
     
     def view_transactions(self):
-        df= pd.read_csv('transactions.csv', parse_dates=['Date'])
+        df = pd.read_csv('transactions.csv', parse_dates=['Date'])
         pprint(df)
     
     def view_accounts(self):
@@ -38,7 +38,7 @@ class budget:
     def set_limit(self, category, amount):
         self.limits[category] = amount
 
-    def view_limit(self):
+    def view_limits(self):
         pprint(self.limits)
     
     def check_limit(self, category):
@@ -63,4 +63,8 @@ class budget:
     def check_remaining_balance(self, category):
         category_expenses = self.check_category_expenses(category)
         limit = self.check_limit
-        return limit - category_expenses
+        remaining_balance = limit - category_expenses
+        pprint(f'The remaining balance for {category} is {remaining_balance}')
+
+    def get_account_names(self):
+        return self.accounts.keys()
