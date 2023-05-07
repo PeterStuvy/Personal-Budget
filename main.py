@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 from budget import budget
 from datetime import datetime
 import click
@@ -6,7 +9,7 @@ from pprint import pprint
 my_budget = budget()
 
 while True:
-    feature_options = ['Add an account', 'Add a transaction', 'View transactions or accounts', 'Set a budget limit', 'View budget limits', 'View the remaining budget for the month', 'Quit']
+    feature_options = ['Add an account', 'Add a transaction', 'Set a budget limit', 'View budget limits', 'View the remaining budget for the month', 'Quit']
     feature_choice = click.prompt('What would you like to do?: ', type=click.Choice(feature_options))
 
     if feature_choice == 'Add an account':
