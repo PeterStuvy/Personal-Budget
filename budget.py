@@ -8,32 +8,17 @@ class budget:
         self.accounts = {}
         self.limits = {}
     
-    #Add and remove accounts abd transactions
-
     def add_account(self, name, balance=0):
         self.accounts[name] = balance
     
     def add_transaction(self, date, amount, description, account):
-        #add some error handling for whether the account exists
         self.accounts[account] += amount
         self._append_transaction_to_csv(date, amount, description, account)
-    
-    def view_transactions(self):
-        df = pd.read_csv('transactions.csv', parse_dates=['Date'])
-        pprint(df)
-    
-    def view_accounts(self):
-        pprint(self.accounts)
 
     def _append_transaction_to_csv(self, date, amount, description, account):
         with open('transactions.csv', mode='a', newline='') as csv_file:
             writer = csv.writer(csv_file)
             writer.writerow([date, amount, description, account])
-    
-    #Still to include ability to remove accounts and transactions
-
-
-    #Set limit for transaction types
 
     def set_limit(self, category, amount):
         self.limits[category] = amount
@@ -65,6 +50,3 @@ class budget:
         limit = self.check_limit
         remaining_balance = limit - category_expenses
         pprint(f'The remaining balance for {category} is {remaining_balance}')
-
-    def get_account_names(self):
-        return self.accounts.keys()
