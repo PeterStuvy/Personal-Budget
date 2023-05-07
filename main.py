@@ -18,4 +18,14 @@ if feature_choice == 'Add an account':
         if add_account_input == 'no':
             add_account = False
         
-
+elif feature_choice == 'Add a transaction':
+    add_transaction = True
+    while add_transaction:
+        transaction_date = click.prompt('What is the date of the transaction?', type=str)
+        transaction_amount = click.prompt('What is the amount of the transaction?', type=float)
+        transaction_description = click.prompt('Write a description for the transaction:', type=str)
+        budget.add_transaction(transaction_date, transaction_amount, transaction_description)
+        #Add some error handling for the inputs
+        add_transaction_input = click.prompt('Would you like to add another transaction? (yes or no): ', type=str).lower()
+        if add_transaction_input == 'no':
+            add_transaction = False
