@@ -60,4 +60,7 @@ class budget:
             df = data_frame.loc[mask]
         return df[df['Category'] == category]['Amount'].sum()
     
-    
+    def check_remaining_balance(self, category):
+        category_expenses = self.check_category_expenses(category)
+        limit = self.check_limit
+        return limit - category_expenses
