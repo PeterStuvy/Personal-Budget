@@ -46,4 +46,10 @@ class budget:
             raise ValueError(f'Limit for category {category} has not been set.')
         return self.limits[category]
     
-    
+    def check_total_expenses(self, start_date=None, end_date=None):
+        data_frame = pd.read_csv('transactions.csv', parse_dates=['Date'])
+        if start_date and end_date:
+            mask = (data_frame['Date'] >= start_date) & (data_frame['Date'] <= end_date)
+            data_frame = data_frame.loc[mask]
+        return data_frame['Amount'].sum()
+
